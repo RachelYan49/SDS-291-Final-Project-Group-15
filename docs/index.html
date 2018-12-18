@@ -9,10 +9,10 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Rachel Yan" />
+<meta name="author" content="Arielle Barylsky, Sophia Foster, Rachel Yan" />
 
 
-<title>My Website</title>
+<title>Is Stop-and-Frisk Racially Motivated?</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,9 +24,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -66,6 +64,9 @@ code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Doc
 code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
 code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
 </style>
 <style type="text/css">
   pre:not([class]) {
@@ -195,6 +196,14 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 
@@ -209,7 +218,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -304,24 +313,19 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">Is Stop-and-Frisk Racially Motivated?</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">What is stop-and-frisk (and why do we care)?</a>
 </li>
 <li>
-  <a href="about.html">About</a>
+  <a href="more_info.html">Further Analysis</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://2018-fall-sds-albert.slack.com/">
-    <span class="fa fa-slack fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -329,136 +333,55 @@ div.tocify {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">My Website</h1>
-<h4 class="author"><em>Rachel Yan</em></h4>
-<h4 class="date"><em>Last updated on 2018-11-24</em></h4>
+
+<h1 class="title toc-ignore">Is Stop-and-Frisk Racially Motivated?</h1>
+<h3 class="subtitle"><em>A Closer Look into the NYPD’s Practices</em></h3>
+<h4 class="author"><em>Arielle Barylsky, Sophia Foster, Rachel Yan</em></h4>
+<h4 class="date"><em>Last updated on 2018-12-17</em></h4>
 
 </div>
 
 
-<!--
-Comments in HTML are like this! 
--->
-<p>This is my website!</p>
-<div id="this-is-my-first-section" class="section level1">
-<h1>This is my first section</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x=</span>cyl, <span class="dt">y=</span> mpg)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span> <span class="st">&quot;cylinders&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Miles/gallon&quot;</span>)</code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="what-is-stop-and-frisk-and-why-do-we-care" class="section level1">
+<h1>What is stop-and-frisk (and why do we care)?</h1>
+<p>Although they vary by state, the basic idea of stop-and-frisk laws is that to lawfully stop someone, an officer “must have a reasonable suspicion that a crime has been, is being, or is about to be committed by the suspect.”<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> The New York Police Department has cataloged stop-and-frisk data for the past 14 years in the five boroughs of New York City, from 2003 to 2017.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> Considering the history of racism in the United States and the myriad of news surrounding racially-motivated police brutality, we decided to examine this practice for racial bias among people stopped, and investigate race as a factor in searches, frisks, and use of physical force.</p>
+<p>To start, this graph below visualizes the racial makeup of the 5 boroughs of New York City. To have a baseline for examining potential racial bias, we needed race demographic data for each borough. We found population demographics data from the American Community Survey 5-Year Estimates and selected the years 2017 and 2010 to compare the NYPD data with.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Change order of race levels for graph</span>
+race_levels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;American Indian and Alaska Native&quot;</span>, <span class="st">&quot;Asian and Pacific Islander&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;White&quot;</span>, <span class="st">&quot;Other&quot;</span>)
+
+fulldem&lt;-<span class="st"> </span>fulldem <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Race =</span> <span class="kw">factor</span>(Race, <span class="dt">levels =</span> race_levels))
+
+<span class="co">#Change order of borough levels for graph</span>
+borough_levels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;The Bronx&quot;</span>, <span class="st">&quot;Brooklyn&quot;</span>, <span class="st">&quot;Manhattan&quot;</span>, <span class="st">&quot;Queens&quot;</span>, <span class="st">&quot;Staten Island&quot;</span>)
+
+fulldem &lt;-<span class="st"> </span>fulldem <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Borough =</span> <span class="kw">factor</span>(Borough, <span class="dt">levels =</span> borough_levels))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Plot race demographics in each borough for both years</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> fulldem,
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Percent, <span class="dt">fill =</span> Race)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_col</span>(<span class="dt">position =</span>
+       <span class="kw">position_dodge</span>()) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Borough) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span>
+       <span class="kw">c</span>(<span class="dv">2010</span>, <span class="dv">2017</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>) <span class="op">+</span>
+<span class="st">       </span><span class="kw">ggtitle</span>(<span class="st">&quot;Racial Distribution by Borough&quot;</span>)</code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="960" /></p>
+<p>In all the boroughs, the Indigenous population makes up less than 1% of the population. White makes up the largest racial demographic on average (~50% in 2010), but is not evenly distributed across the boroughs. Black stands at an average of 24%, with the highest percentage in the Bronx (36%) and the lowest in Staten Island (11%). The racial makeup of the boroughs did not significantly change in the 7-year span.</p>
+<p>If NYPD stop-and-frisk practices were not racially motivated, we would expect stop-and-frisk rates to follow about the same racial breakdown as the population demographics for stops and physical force usage.</p>
 </div>
-<div id="my-second-section" class="section level1">
-<h1>My second section</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
-<div class="kable-table">
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">mpg</th>
-<th align="right">cyl</th>
-<th align="right">disp</th>
-<th align="right">hp</th>
-<th align="right">drat</th>
-<th align="right">wt</th>
-<th align="right">qsec</th>
-<th align="right">vs</th>
-<th align="right">am</th>
-<th align="right">gear</th>
-<th align="right">carb</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Mazda RX4</td>
-<td align="right">21.0</td>
-<td align="right">6</td>
-<td align="right">160</td>
-<td align="right">110</td>
-<td align="right">3.90</td>
-<td align="right">2.620</td>
-<td align="right">16.46</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td>Mazda RX4 Wag</td>
-<td align="right">21.0</td>
-<td align="right">6</td>
-<td align="right">160</td>
-<td align="right">110</td>
-<td align="right">3.90</td>
-<td align="right">2.875</td>
-<td align="right">17.02</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td>Datsun 710</td>
-<td align="right">22.8</td>
-<td align="right">4</td>
-<td align="right">108</td>
-<td align="right">93</td>
-<td align="right">3.85</td>
-<td align="right">2.320</td>
-<td align="right">18.61</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td>Hornet 4 Drive</td>
-<td align="right">21.4</td>
-<td align="right">6</td>
-<td align="right">258</td>
-<td align="right">110</td>
-<td align="right">3.08</td>
-<td align="right">3.215</td>
-<td align="right">19.44</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td>Hornet Sportabout</td>
-<td align="right">18.7</td>
-<td align="right">8</td>
-<td align="right">360</td>
-<td align="right">175</td>
-<td align="right">3.15</td>
-<td align="right">3.440</td>
-<td align="right">17.02</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td>Valiant</td>
-<td align="right">18.1</td>
-<td align="right">6</td>
-<td align="right">225</td>
-<td align="right">105</td>
-<td align="right">2.76</td>
-<td align="right">3.460</td>
-<td align="right">20.22</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Busby, John C. “Stop and Frisk.” LII / Legal Information Institute, 17 Sept. 2009, <a href="https://www.law.cornell.edu/wex/stop_and_frisk" class="uri">https://www.law.cornell.edu/wex/stop_and_frisk</a>.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>“Stop, Question and Frisk Data.” NYPD. <a href="https://www1.nyc.gov/site/nypd/stats/reports-analysis/stopfrisk.page" class="uri">https://www1.nyc.gov/site/nypd/stats/reports-analysis/stopfrisk.page</a>. Accessed 15 Dec. 2018<a href="#fnref2">↩</a></p></li>
+</ol>
 </div>
 
 

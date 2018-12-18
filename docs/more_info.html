@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Arielle Barylsky, Sophia Foster, Rachel Yan" />
+
+
+<title>Is Stop-and-Frisk Racially Motivated?</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Is Stop-and-Frisk Racially Motivated?</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">What is stop-and-frisk (and why do we care)?</a>
+</li>
+<li>
+  <a href="more_info.html">Further Analysis</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Is Stop-and-Frisk Racially Motivated?</h1>
+<h3 class="subtitle"><em>A Closer Look into the NYPD’s Practices</em></h3>
+<h4 class="author"><em>Arielle Barylsky, Sophia Foster, Rachel Yan</em></h4>
+<h4 class="date"><em>Last updated on 2018-12-17</em></h4>
+
+</div>
+
+
+<div id="further-analysis" class="section level1">
+<h1>Further Analysis</h1>
+<p>Below is a map of rates of stop-and-frisk by borough. Immediately, it is clear that there is a disparity between boroughs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This is our map </span>
+
+alldata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="kw">desc</span>(Per1000)),
+  <span class="dt">size =</span> <span class="fl">0.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Stop and Frisk by Borough&#39;</span>,
+  <span class="dt">fill =</span> <span class="st">&#39;Number of Stop-and-Frisks </span><span class="ch">\n</span><span class="st">\ per 1000 Inhabitants&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(
+  <span class="dt">data =</span> alldata,
+  <span class="kw">aes</span>(<span class="dt">x =</span> Longitude, <span class="dt">y =</span> Latitude, <span class="dt">label =</span> Borough),
+  <span class="dt">size =</span> <span class="dv">5</span>,
+  <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_dark</span>()</code></pre></div>
+<p><img src="more_info_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Looking at the map, the Bronx has the highest stop-and-frisk rates and Staten Island has the lowest. In comparison, the Bronx has the highest black population and the lowest white population while Staten Island has the reverse. When considering this racial breakdown of the boroughs, the idea that stop-and-frisk is racially motivated is reinforced—at a glance, it seems as if the higher white population is connected to lower rates of stop-and-frisk and a higher black population is connected to higher rates.</p>
+<p><em>Note -</em> <em>Definitions: “Frisk” is when someone is subject to a brief “limited search of the person’s outer clothing—for weapons,” a “search” is not confined to weapons and “involves the officer probing for evidence”-this is more extensive.</em><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. <em>Physical force, as used by the data set, encompasses a number of different forms of physical force.</em><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<p>To further investigate, here is the breakdown of stop-and-frisk rates by race in 2010 and 2017 in each borough.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Visualization for stop and frisk comparison 2010 vs. 2017</span>
+race_levels &lt;-
+<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;Asian American and Pacific Islander&quot;</span>, <span class="st">&quot;Black&quot;</span>, <span class="st">&quot;White&quot;</span>, <span class="st">&quot;Other&quot;</span>)
+  
+TwoDataSet &lt;-<span class="st"> </span>TwoDataSet <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">race =</span> <span class="kw">factor</span>(race, <span class="dt">levels =</span> race_levels)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">na.omit</span>()
+  
+
+Only_frisked &lt;-<span class="st"> </span>TwoDataSet <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(frisked <span class="op">==</span><span class="st"> &quot;Y&quot;</span>, city <span class="op">!=</span><span class="st"> &quot;NA&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(year, race, city, frisked)
+  
+
+<span class="kw">ggplot</span>(Only_frisked, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>year))<span class="op">+</span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> race), <span class="dt">position =</span> <span class="kw">position_dodge2</span>(<span class="dt">preserve =</span> <span class="st">&quot;total&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span> (<span class="op">~</span>city)<span class="op">+</span><span class="kw">ggtitle</span>(<span class="st">&quot;Frisked by Race and Borough 2010 vs. 2017&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Frisked&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Number&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">2010</span>, <span class="dv">2017</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
+<p><img src="more_info_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>This graph shows the count of stop-and-frisk by race and boroughs for both 2010 and 2017 in order to examine how has the trend changed over time. Given that both the physical force used and stop-and-frisk graphs look nearly identical and follow the same trend, we will be only focusing on the frisked visualization.</p>
+<p>It appears that the stop-and-frisk rates for 2010 are significantly higher than in 2017. This is likely a result of the groundbreaking federal lawsuit in 2013 that ruled the NYPD’s stop-and-frisk tactics unconstitutional.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> Despite the new law’s impact on the sheer number of frisks, searches, and physical force used, it is important to see if a racial disparity still exists in the NYPD’s practices in 2017. To do so, we will take a closer look at the stop-and-frisk rates in 2017 to examine racial bias even amidst the legislative changes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Visualization for Frisk in 2017</span>
+StopFrisk2017_cleaned &lt;-<span class="st"> </span>StopFrisk2017_cleaned <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">race =</span> <span class="kw">factor</span>(race, <span class="dt">levels =</span> race_levels)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(PhysicalForce <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>, frisked <span class="op">==</span><span class="st"> &quot;Y&quot;</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> StopFrisk2017_cleaned, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> frisked)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> race), <span class="dt">position =</span>
+  <span class="kw">position_dodge</span>()) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span> (<span class="op">~</span><span class="st"> </span>city) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Stop-and-Frisk by Race and Borough 2017&quot;</span>)  <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Frisked&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Number&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels =</span> <span class="kw">c</span>( <span class="st">&quot;2017&quot;</span>))<span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
+<p><img src="more_info_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>The bar graph suggests that in general, Black people are more likely to be stopped and frisked by NYPD across all boroughs. In particular, Black individuals are most likely to be frisked in Brooklyn, followed by The Bronx, Manhattan, Queens and least likely in Staten Island. In addition, Asian and Pacific Islander individuals are most likely to be subjected to stop-and-frisk in Queens. The precincts where stops are most prevalent tend to be in Brooklyn — particularly East New York, then the Bronx, with a few in Staten Island, Jamaica in Queens and Harlem in Manhattan <a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> In contrast, the areas with the least stops tend to be ones with a predominately White demographic: Staten Island, Manhattan, and Greenpoint in Brooklyn.</p>
+<p>It is possible that the racial makeup of a precinct predicts the number of stops, however, referring back to the previous graph, Black people are consistently being stopped and frisked even in predominantly white neighborhoods, despite the legislative changes. This disproportionate stopping of minorities suggests that there is racial profiling. We, therefore, concluded that although the number of minorities being stopped and frisked decreases from 2010 to 2017, the racial disparity persists.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Schwartzbach, Micah. “The Difference Between a Police ‘Search’ and a Police ‘Frisk.’” NOLO. <a href="https://www.nolo.com/legal-encyclopedia/difference-between-a-search-and-a-frisk.html" class="uri">https://www.nolo.com/legal-encyclopedia/difference-between-a-search-and-a-frisk.html</a> Accessed 15 Dec. 2018.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Schwartzbach, Micah. “The Difference Between a Police ‘Search’ and a Police ‘Frisk.’” Nolo, Nolo, 8 Nov. 2016, www.nolo.com/legal-encyclopedia/difference-between-a-search-and-a-frisk.html. Accessed 15 Dec. 2018.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>Benz, Dorothee and David Lerner. 21, Aug 2014. “The Landmark Decision: Judge Rules NYPD Stop and Frisk Practices Unconstitutional, Racially Discriminatory”, Center For Constitutional Rights. Aug. 2014 <a href="https://ccrjustice.org/home/press-center/press-releases/landmark-decision-judge-rules-nypd-stop-and-frisk-practices" class="uri">https://ccrjustice.org/home/press-center/press-releases/landmark-decision-judge-rules-nypd-stop-and-frisk-practices</a> Accessed Dec.15<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>Barron, James, “New York City’s Population Hits a Record 8.6 Million.” 22, Mar. 2018. The New York Times. <a href="https://www.nytimes.com/2018/03/22/nyregion/new-york-city-population.html" class="uri">https://www.nytimes.com/2018/03/22/nyregion/new-york-city-population.html</a> . Accessed, 17, Dec 2018<a href="#fnref4">↩</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

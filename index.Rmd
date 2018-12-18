@@ -1,33 +1,166 @@
 ---
-title: "My Website"
-author: "Rachel Yan"
+title: "Is Stop-and-Frisk Racially Motivated?"
+subtitle: "A Closer Look into the NYPD’s Practices"
+author: "Arielle Barylsky, Sophia Foster, Rachel Yan"
 date: "Last updated on `r Sys.Date()`"
 output:
   html_document:
+    code_folding: hide
+    highlight: tango
+    theme: cosmo
     toc: true
-    toc_depth: 3
+    toc_depth: 2
     toc_float: true
     df_print: kable
+
 ---
 
-<!--
-Comments in HTML are like this! 
--->
 
-Websites!!!!!!
 
-# This is my first section
-
-```{r}
-library(ggplot2)
-ggplot(mtcars, aes(x=cyl, y= mpg)) +
-  geom_point() +
-  labs(x= "cylinders", y = "Miles/gallon")
+```{r include=FALSE}
+#Load necessary packages
+library(readr)
+library(plyr)
+library(stringr)
+library(tidyverse)
+library(RColorBrewer)
 ```
 
+```{r include=FALSE}
 
-# My second section
+#Load 2010 demographic dataset
+
+dem2010 <- read_csv("ACS_10_5YR_DP05.csv",
+                    skip = 1)
+                    
+#Select only the needed columns
+dem2010 <- dem2010 %>%
+  select(-contains("Margin of Error")) %>%
+  select(3, contains("Percent")) %>%
+  select(c(1, 2, 3, 4, 5, 6, 7, 8))
+  
+#Rename columns
+names(dem2010)[1] <- "Borough"
+names(dem2010)[2] <- "Total"
+names(dem2010)[3] <- "White"
+names(dem2010)[4] <- "Black"
+names(dem2010)[5] <- "American Indian and Alaska Native"
+names(dem2010)[6] <- "Asian"
+names(dem2010)[7] <- "Native Hawaiian and Other Pacific Islander"
+names(dem2010)[8] <- "Other"
+
+#Combine Asian and Native Hawaiian and Other Pacific Islander
+dem2010 <- dem2010 %>%
+  mutate(`Asian and Pacific Islander` = `Asian` + `Native Hawaiian and Other Pacific Islander`)
+
+#Remove unnecessary columns
+dem2010$`Asian` <- NULL
+dem2010$`Native Hawaiian and Other Pacific Islander` <- NULL
+
+#Tidy the columns 
+dem2010 <- dem2010 %>%
+  gather(key = "Race",
+  value = "Percent",
+  "White":"Asian and Pacific Islander")
+  
+#Add Year column
+dem2010$Year <- rep(2010, nrow(dem2010))
+```
+
+```{r include=FALSE}
+#Load 2017 demographic dataset
+dem2017 <- read_csv("ACS_17_5YR_DP05.csv",
+                    skip = 1)
+                    
+#Select only the needed columns
+dem2017 <- dem2017 %>%
+  select(c(3, 20, 26, 30, 34, 38, 42, 46))
+
+#Rename columns
+names(dem2017)[1] <- "Borough"
+names(dem2017)[2] <- "Total"
+names(dem2017)[3] <- "White"
+names(dem2017)[4] <- "Black"
+names(dem2017)[5] <- "American Indian and Alaska Native"
+names(dem2017)[6] <- "Asian"
+names(dem2017)[7] <- "Native Hawaiian and Other Pacific Islander"
+names(dem2017)[8] <- "Other"
+
+#Combine Asian and Native Hawaiian and Other Pacific Islander
+dem2017 <- dem2017 %>%
+  mutate(`Asian and Pacific Islander` = `Asian` + `Native Hawaiian and Other Pacific Islander`)
+
+#Remove unnecessary columns
+dem2017$`Asian` <- NULL
+dem2017$`Native Hawaiian and Other Pacific Islander` <- NULL
+
+#Tidy the columns 
+dem2017 <- dem2017 %>%
+  gather(key = "Race",
+  value = "Percent",
+  "White":"Asian and Pacific Islander")
+  
+#Add Year column
+dem2017$Year <- rep(2017, nrow(dem2017))
+```
+
+```{r include=FALSE}
+#Combine 2010 and 2017 cleaned demographic datasets
+fulldem <- rbind(dem2010, dem2017)
+
+#Rename values in "Borough" from County names to Borough names
+fulldem$Borough <-
+  revalue(
+    fulldem$Borough,
+    c(
+      "Bronx County, New York" = "The Bronx",
+      "Kings County, New York" = "Brooklyn",
+      "New York County, New York" = "Manhattan",
+      "Queens County, New York" = "Queens",
+      "Richmond County, New York" = "Staten Island"
+    )
+  )
+```
+
+# What is stop-and-frisk (and why do we care)? 
+
+Although laws vary by state, the basic idea of stop-and-frisk is that to legally stop someone, an officer “must have a reasonable suspicion that a crime has been, is being, or is about to be committed by the suspect.”^[Busby, John C. “Stop and Frisk.” LII / Legal Information Institute, 17 Sept. 2009, https://www.law.cornell.edu/wex/stop_and_frisk.]  The New York Police Department has cataloged stop-and-frisk data for the past 14 years in the five boroughs of New York City, from 2003 to 2017.^[“Stop, Question and Frisk Data.” NYPD. https://www1.nyc.gov/site/nypd/stats/reports-analysis/stopfrisk.page. Accessed 15 Dec. 2018]  Considering the history of racism in the United States and the myriad of news surrounding racially-motivated police brutality, we decided to examine this practice for racial bias among people frisked, searched, and subject to physical force. 
+
+
+To start, the graph below visualizes the racial makeup of the five boroughs of New York City. To have a baseline for examining potential racial bias, we needed race demographic data for each borough. We found population demographics data from the ACS Census 5-Year Estimates and selected the years 2017 and 2010 to compare with the NYPD data. 
 
 ```{r}
-head(mtcars)
+#Change order of race levels for graph
+race_levels <-
+  c(
+  "American Indian and Alaska Native",
+  "Asian and Pacific Islander",
+  "Black",
+  "White",
+  "Other"
+  )
+  
+fulldem <- fulldem %>%
+  mutate(Race = factor(Race, levels = race_levels))
+  
+#Change order of borough levels for graph
+borough_levels <-
+  c("The Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island")
+  
+fulldem <- fulldem %>%
+  mutate(Borough = factor(Borough, levels = borough_levels))
 ```
+
+```{r fig.width = 10}
+
+#Plot race demographics in each borough for both years
+ggplot(data = fulldem,
+       mapping = aes(x = Year, y = Percent, fill = Race)) + geom_col(position =
+       position_dodge()) + facet_wrap(~ Borough) + scale_x_continuous(breaks =
+       c(2010, 2017)) + scale_fill_brewer(palette = "Set1") +
+       ggtitle("Racial Distribution by Borough")
+```
+
+The racial makeup of the boroughs did not significantly change in the 7-year span. In all the boroughs, the Indigenous population makes up less than 1% of the population. White makes up the largest racial demographic on average (~50% in 2010), but is not evenly distributed across the boroughs. Black stands at an average of 24%, with the highest percentage in the Bronx (36%) and the lowest in Staten Island (11%).
+
+If NYPD stop-and-frisk practices were not racially motivated, we would expect stop-and-frisk rates to follow about the same racial breakdown as the population demographics.

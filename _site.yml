@@ -1,4 +1,4 @@
-name: "my-website"
+name: "final-project"
 output_dir: docs
 # The website theme was chosen from
 # https://rmarkdown.rstudio.com/html_document_format#appearance_and_style
@@ -14,12 +14,12 @@ output:
     self_contained: no
 # All fa icons were obtained from https://fontawesome.com/icons?d=gallery
 navbar:
-  title: "My Website"
+  title: "Is Stop-and-Frisk Racially Motivated?" 
   left:
-    - text: "Home"
+    - text: "What is stop-and-frisk (and why do we care)?"
       href: index.html
-    - text: "About"
-      href: about.html
-  right:
-    - icon: fa-slack fa-lg
-      href: https://2018-fall-sds-albert.slack.com/
+    - text: "Further Analysis"
+      href: more_info.html
+#  right:
+#    - icon: fa-slack fa-lg
+#      href: https://2018-fall-sds-albert.slack.com/
